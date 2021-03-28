@@ -30,6 +30,8 @@ internal class GamesViewModelTest {
 
     val loadingSlot = slot<ViewState.Loading>()
 
+    val errorSlot = slot<ViewState.Error>()
+
     @BeforeEach
     fun setUp() {
         gamesViewModel = GamesViewModel(
@@ -50,7 +52,6 @@ internal class GamesViewModelTest {
         fun `Should change loading live data`() {
             val platformId = 1
             val gameName = ""
-            val expectedViewState = ViewState.Loading
 
             coEvery {
                 gamesInteractorMock.getGameList(platformId)
@@ -91,6 +92,7 @@ internal class GamesViewModelTest {
             val platformId = 1
             val nextPage = 2
             val searchQuery = "teste"
+            val searchSlot = slot<ViewState.Search>()
 
             coEvery {
                 gamesInteractorMock.getGameList(platformId, searchQuery = searchQuery)
@@ -98,9 +100,12 @@ internal class GamesViewModelTest {
 
             runBlocking { gamesViewModel.getGames(platformId, searchQuery) }
 
-            verify {
-                observerViewStateLiveDataMock.onChanged(ViewState.Search(gameListResultData))
+            verifySequence {
+                observerViewStateLiveDataMock.onChanged(capture(loadingSlot))
+                observerViewStateLiveDataMock.onChanged(capture(searchSlot))
             }
+
+            assertEquals(gameListResultData, searchSlot.captured.data)
         }
 
         @Test
