@@ -3,6 +3,7 @@ package com.gustavo.architectureapp.utils.koin
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.view.adapters.PlatformAdapter
 import com.gustavo.architectureapp.data.api.GamesApiServiceProvider
+import com.gustavo.architectureapp.data.enums.PlatformEnum.*
 import com.gustavo.architectureapp.data.games.PlatformGrid
 import com.gustavo.architectureapp.data.interactor.GameDetailsInteractor
 import com.gustavo.architectureapp.data.mapper.GameMapper
@@ -74,30 +75,30 @@ val gamesModule = module {
 
 fun nintendoSwitchPlatformInput() = PlatformGrid(
         imageResourceId = R.drawable.nintendo_switch_platform_icon ,
-        platformId = 7
+        platformId = NINTENDO_SWITCH.platformId
 )
 
 fun pcPlatformInput() = PlatformGrid(
         imageResourceId = R.drawable.pc_platform_icon,
-        platformId = 4
+        platformId = PC.platformId
 )
 
 fun ps5PlatformInput() = PlatformGrid(
         imageResourceId = R.drawable.ps5_platform_icon,
-        platformId = 187
+        platformId = PS5.platformId
 )
 
 fun xboxSeriesPlatformInput() = PlatformGrid(
         imageResourceId = R.drawable.xbox_series_platform_icon,
-        platformId = 186
+        platformId = XBOX_SERIES.platformId
 )
 
 fun ps4PlatformInput() = PlatformGrid(
         imageResourceId = R.drawable.ps4_platform_icon,
-        platformId = 18
+        platformId = PS4.platformId
 )
 
 fun xboxOnePlatformInput() = PlatformGrid(
         imageResourceId = R.drawable.xbox_one_platform_icon,
-        platformId = 1
+        platformId = XBOX_ONE.platformId
 )
