@@ -24,10 +24,11 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled true
             buildConfigField "String", "BASE_URL", "\"http://api.rawg.io/api/\""
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
