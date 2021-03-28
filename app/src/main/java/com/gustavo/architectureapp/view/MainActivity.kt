@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportActionBar?.hide()
-        supportActionBar?.show()
 
         supportFragmentManager.findFragmentById(R.id.navigation_fragment)
 
