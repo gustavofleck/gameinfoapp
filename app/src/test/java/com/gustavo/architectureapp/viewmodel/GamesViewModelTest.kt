@@ -28,9 +28,11 @@ internal class GamesViewModelTest {
 
     val observerViewStateLiveDataMock = mockk<Observer<ViewState>>(relaxed = true)
 
-    val loadingSlot = slot<ViewState.Loading>()
+    val loadingViewStateSlot = slot<ViewState.Loading>()
 
-    val errorSlot = slot<ViewState.Error>()
+    val errorViewStateSlot = slot<ViewState.Error>()
+
+    val successViewStateSlot = slot<ViewState.Success>()
 
     @BeforeEach
     fun setUp() {
@@ -60,7 +62,7 @@ internal class GamesViewModelTest {
             runBlocking { gamesViewModel.getGames(platformId, gameName) }
 
             verify {
-                observerViewStateLiveDataMock.onChanged(capture(loadingSlot))
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
             }
         }
 
@@ -70,7 +72,6 @@ internal class GamesViewModelTest {
             val platformId = 1
             val nextPage = 2
             val gameName = ""
-            val expectedViewState = slot<ViewState.Success>()
 
             coEvery {
                 gamesInteractorMock.getGameList(platformId)
@@ -79,11 +80,11 @@ internal class GamesViewModelTest {
             runBlocking { gamesViewModel.getGames(platformId, gameName) }
 
             verifySequence {
-                observerViewStateLiveDataMock.onChanged(capture(loadingSlot))
-                observerViewStateLiveDataMock.onChanged(capture(expectedViewState))
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
+                observerViewStateLiveDataMock.onChanged(capture(successViewStateSlot))
             }
 
-            assertEquals(gameListResultData, expectedViewState.captured.data)
+            assertEquals(gameListResultData, successViewStateSlot.captured.data)
         }
 
         @Test
@@ -94,14 +95,14 @@ internal class GamesViewModelTest {
             val searchQuery = "teste"
             val searchSlot = slot<ViewState.Search>()
 
-//            coEvery {
+            coEvery {
                 gamesInteractorMock.getGameList(platformId, searchQuery = searchQuery)
             } returns SimpleResult.Success(GameList(nextPage, gameListResultData))
 
             runBlocking { gamesViewModel.getGames(platformId, searchQuery) }
 
             verifySequence {
-                observerViewStateLiveDataMock.onChanged(capture(loadingSlot))
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
                 observerViewStateLiveDataMock.onChanged(capture(searchSlot))
             }
 
@@ -120,8 +121,9 @@ internal class GamesViewModelTest {
 
             runBlocking { gamesViewModel.getGames(platformId, gameName) }
 
-            verify {
-                observerViewStateLiveDataMock.onChanged(ViewState.Error)
+            verifySequence {
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
+                observerViewStateLiveDataMock.onChanged(capture(errorViewStateSlot))
             }
         }
     }
@@ -159,7 +161,7 @@ internal class GamesViewModelTest {
             runBlocking { gamesViewModel.getNextPage(platformId) }
 
             verify {
-                observerViewStateLiveDataMock.onChanged(ViewState.Loading)
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
             }
         }
 
@@ -183,9 +185,12 @@ internal class GamesViewModelTest {
 
             runBlocking { gamesViewModel.getNextPage(platformId) }
 
-            verify {
-                observerViewStateLiveDataMock.onChanged(ViewState.Success(gameListResultData))
+            verifySequence {
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
+                observerViewStateLiveDataMock.onChanged(capture(successViewStateSlot))
             }
+
+            assertEquals(gameListResultData, successViewStateSlot.captured.data)
         }
 
         @Test
@@ -208,8 +213,9 @@ internal class GamesViewModelTest {
 
             runBlocking { gamesViewModel.getNextPage(platformId) }
 
-            verify {
-                observerViewStateLiveDataMock.onChanged(ViewState.Error)
+            verifySequence {
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
+                observerViewStateLiveDataMock.onChanged(capture(errorViewStateSlot))
             }
         }
     }
