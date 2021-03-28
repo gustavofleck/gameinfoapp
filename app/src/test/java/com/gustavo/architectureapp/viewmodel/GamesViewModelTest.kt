@@ -94,7 +94,7 @@ internal class GamesViewModelTest {
             val searchQuery = "teste"
             val searchSlot = slot<ViewState.Search>()
 
-            coEvery {
+//            coEvery {
                 gamesInteractorMock.getGameList(platformId, searchQuery = searchQuery)
             } returns SimpleResult.Success(GameList(nextPage, gameListResultData))
 
