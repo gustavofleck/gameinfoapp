@@ -2,7 +2,7 @@ package com.gustavo.architectureapp.viewmodel
 
 import androidx.lifecycle.Observer
 import com.gustavo.architectureapp.data.games.GameList
-import com.gustavo.architectureapp.data.games.ViewState
+import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import com.gustavo.architectureapp.data.interactor.GamesInteractor
 import com.gustavo.architectureapp.utils.*
 import com.gustavo.architectureapp.utils.pagination.PaginationController
@@ -26,13 +26,13 @@ internal class GamesViewModelTest {
 
     val paginationControllerMock = mockk<PaginationController>(relaxed = true)
 
-    val observerViewStateLiveDataMock = mockk<Observer<ViewState>>(relaxed = true)
+    val observerViewStateLiveDataMock = mockk<Observer<GameListViewState>>(relaxed = true)
 
-    val loadingViewStateSlot = slot<ViewState.Loading>()
+    val loadingViewStateSlot = slot<GameListViewState.Loading>()
 
-    val errorViewStateSlot = slot<ViewState.Error>()
+    val errorViewStateSlot = slot<GameListViewState.Error>()
 
-    val successViewStateSlot = slot<ViewState.Success>()
+    val successViewStateSlot = slot<GameListViewState.Success>()
 
     @BeforeEach
     fun setUp() {
@@ -93,7 +93,7 @@ internal class GamesViewModelTest {
             val platformId = 1
             val nextPage = 2
             val searchQuery = "teste"
-            val searchSlot = slot<ViewState.Search>()
+            val searchSlot = slot<GameListViewState.Search>()
 
             coEvery {
                 gamesInteractorMock.getGameList(platformId, searchQuery = searchQuery)

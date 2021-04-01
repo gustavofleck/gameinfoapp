@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gustavo.architectureapp.data.games.GameItem
 import com.gustavo.architectureapp.data.games.GameList
-import com.gustavo.architectureapp.data.games.ViewState
+import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import com.gustavo.architectureapp.data.interactor.GamesInteractor
 import com.gustavo.architectureapp.utils.pagination.PaginationController
 import com.gustavo.architectureapp.utils.result.SimpleResult
@@ -24,11 +24,11 @@ class GamesViewModel(
 
     private var gameName = ""
 
-    private val viewStateLiveData = MutableLiveData<ViewState>()
-    fun getViewStateLiveDataValue(): LiveData<ViewState> = viewStateLiveData
+    private val viewStateLiveData = MutableLiveData<GameListViewState>()
+    fun getViewStateLiveDataValue(): LiveData<GameListViewState> = viewStateLiveData
 
     fun getGames(platformId: Int, gameName: String, search: Boolean = false) {
-        viewStateLiveData.value = ViewState.Loading
+        viewStateLiveData.value = GameListViewState.Loading
         this.gameName = gameName
         isSearch = gameName.isNotEmpty()
         viewModelScope.launch(threadContextProvider.io) {
@@ -43,7 +43,7 @@ class GamesViewModel(
     fun getNextPage(platformId: Int) {
         isSearch = false
         if (paginationController.hasNextPage()) {
-            viewStateLiveData.value = ViewState.Loading
+            viewStateLiveData.value = GameListViewState.Loading
             viewModelScope.launch(threadContextProvider.io) {
                 val nextSimpleResult =
                     gamesInteractor.getGameList(
@@ -64,7 +64,7 @@ class GamesViewModel(
     }
 
     private fun errorStateHandler(exception: Exception) {
-        viewStateLiveData.value = ViewState.Error
+        viewStateLiveData.value = GameListViewState.Error
     }
 
     private fun successStateHandler(gameList: GameList) {
@@ -72,8 +72,8 @@ class GamesViewModel(
         paginationController.setNextPage(gameList.nextPage)
     }
 
-    private fun setupSuccessViewState(gameList: List<GameItem>): ViewState {
-        return if (isSearch) ViewState.Search(gameList) else ViewState.Success(gameList)
+    private fun setupSuccessViewState(gameList: List<GameItem>): GameListViewState {
+        return if (isSearch) GameListViewState.Search(gameList) else GameListViewState.Success(gameList)
     }
 
 }

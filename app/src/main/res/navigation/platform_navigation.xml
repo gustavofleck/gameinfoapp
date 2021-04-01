@@ -22,8 +22,16 @@
             android:name="platformId"
             app:argType="integer" />
         <action
-            android:id="@+id/action_gameListFragment_to_game_details_navigation"
-            app:destination="@id/game_details_navigation" />
+            android:id="@+id/action_gameListFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment" />
     </fragment>
-    <include app:graph="@navigation/game_details_navigation" />
+    <fragment
+        android:id="@+id/gameDetailsFragment"
+        android:name="com.gustavo.architectureapp.view.fragments.GameDetailsFragment"
+        android:label="game_details_fragment"
+        tools:layout="@layout/game_details_fragment" >
+        <argument
+            android:name="gameId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

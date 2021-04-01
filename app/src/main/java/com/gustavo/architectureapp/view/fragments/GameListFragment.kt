@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.databinding.FragmentGameListBinding
 import com.gustavo.architectureapp.data.games.GameItem
-import com.gustavo.architectureapp.data.games.ViewState
+import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import com.gustavo.architectureapp.utils.search.DebounceSearchListener
 import com.gustavo.architectureapp.view.adapters.GameAdapter
 import com.gustavo.architectureapp.viewmodel.GamesViewModel
@@ -102,11 +102,11 @@ class GameListFragment : Fragment() {
         })
     }
 
-    private fun viewStateHandler(viewState: ViewState) {
+    private fun viewStateHandler(viewState: GameListViewState) {
         when (viewState) {
-            is ViewState.Loading -> loadingViewStateUpdate(true)
-            is ViewState.Search -> searchViewStateUpdate(viewState.data)
-            is ViewState.Success -> successResponseViewStateUpdate(viewState.data)
+            is GameListViewState.Loading -> loadingViewStateUpdate(true)
+            is GameListViewState.Search -> searchViewStateUpdate(viewState.data)
+            is GameListViewState.Success -> successResponseViewStateUpdate(viewState.data)
         }
     }
 

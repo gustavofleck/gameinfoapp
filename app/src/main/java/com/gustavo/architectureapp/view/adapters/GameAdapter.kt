@@ -3,12 +3,14 @@ package com.gustavo.architectureapp.view.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.data.games.GameItem
 import com.gustavo.architectureapp.utils.diffutils.GamesDiffCallback
 import com.gustavo.architectureapp.utils.image.ImageLoader
+import com.gustavo.architectureapp.view.fragments.GameListFragmentDirections
 import kotlinx.android.synthetic.main.game_item.view.*
 
 internal class GameAdapter(
@@ -44,9 +46,8 @@ internal class GameAdapter(
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = gameList[position]
-        holder.bind(game) {
+        holder.bind(game)
 
-        }
     }
 
     internal class GameViewHolder(
@@ -54,7 +55,7 @@ internal class GameAdapter(
         private val imageLoader: ImageLoader
     ) : RecyclerView.ViewHolder(view) {
 
-        fun bind(gameItem: GameItem, click: () -> Unit) {
+        fun bind(gameItem: GameItem) {
 
             view.apply {
 
@@ -63,7 +64,7 @@ internal class GameAdapter(
                 imageLoader.loadImage(gameImageView, gameItem.backgroundImageUri)
 
                 gameCardView.setOnClickListener {
-                    click()
+                    Navigation.findNavController(it).navigate(GameListFragmentDirections.actionGameListFragmentToGameDetailsFragment(gameItem.id))
                 }
             }
 
