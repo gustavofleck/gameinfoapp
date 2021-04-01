@@ -1,15 +1,17 @@
 package com.gustavo.architectureapp.viewmodel
 
 import androidx.lifecycle.Observer
-import com.gustavo.architectureapp.data.games.GameDetails
 import com.gustavo.architectureapp.data.interactor.GameDetailsInteractor
 import com.gustavo.architectureapp.utils.InstantExecutorExtension
 import com.gustavo.architectureapp.utils.TestThreadContextProvider
 import com.gustavo.architectureapp.utils.createCompleteMappedGameDetailsStub
 import com.gustavo.architectureapp.utils.result.SimpleResult
+import com.gustavo.architectureapp.utils.viewstate.GameDetailsViewState
 import io.mockk.coEvery
 import io.mockk.mockk
+import io.mockk.slot
 import io.mockk.verify
+import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -24,11 +26,13 @@ class GameDetailsViewModelTest {
 
     var gameDetailsInteractorMock = mockk<GameDetailsInteractor>()
 
-    val observerLoadingLiveDataMock = mockk<Observer<Boolean>>(relaxed = true)
+    val observerViewStateLiveDataMock = mockk<Observer<GameDetailsViewState>>(relaxed = true)
 
-    val observerGameDetailsLiveDataMock = mockk<Observer<GameDetails>>(relaxed = true)
+    val loadingViewStateSlot = slot<GameDetailsViewState.Loading>()
 
-    val observerErrorLiveDataMock = mockk<Observer<Exception>>(relaxed = true)
+    val errorViewStateSlot = slot<GameDetailsViewState.Error>()
+
+    val successViewStateSlot = slot<GameDetailsViewState.Success>()
 
     @Nested
     @DisplayName("Given a view request for game details")
@@ -44,13 +48,13 @@ class GameDetailsViewModelTest {
                 gameDetailsInteractorMock,
                 TestThreadContextProvider()
             )
+
+            gameDetailsViewModel.getViewStateLiveData().observeForever(observerViewStateLiveDataMock)
+
         }
 
         @Test
         fun `Should change loading live data`(){
-
-            gameDetailsViewModel.getLoadingLiveDataValue().observeForever(observerLoadingLiveDataMock)
-
             coEvery {
                 gameDetailsInteractorMock.getGameDetails(gameId)
             } returns SimpleResult.Success(gameDetailsResultData)
@@ -58,16 +62,13 @@ class GameDetailsViewModelTest {
             runBlocking { gameDetailsViewModel.getGameDetails(gameId) }
 
             verify {
-                observerLoadingLiveDataMock.onChanged(true)
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
             }
 
         }
 
         @Test
         fun `When returns a success result, should change game details live data`(){
-
-            gameDetailsViewModel.getGameDetailsLiveDataValue().observeForever(observerGameDetailsLiveDataMock)
-
             coEvery {
                 gameDetailsInteractorMock.getGameDetails(gameId)
             } returns SimpleResult.Success(gameDetailsResultData)
@@ -75,15 +76,16 @@ class GameDetailsViewModelTest {
             runBlocking { gameDetailsViewModel.getGameDetails(gameId) }
 
             verify {
-                observerGameDetailsLiveDataMock.onChanged(gameDetailsResultData)
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
+                observerViewStateLiveDataMock.onChanged(capture(successViewStateSlot))
             }
+
+            assertEquals(gameDetailsResultData, successViewStateSlot.captured.data)
         }
 
         @Test
         fun `When throws an exception, should change error live data`(){
             val exception = Exception()
-
-            gameDetailsViewModel.getErrorLiveDataValue().observeForever(observerErrorLiveDataMock)
 
             coEvery {
                 gameDetailsInteractorMock.getGameDetails(gameId)
@@ -92,7 +94,8 @@ class GameDetailsViewModelTest {
             runBlocking { gameDetailsViewModel.getGameDetails(gameId) }
 
             verify {
-                observerErrorLiveDataMock.onChanged(exception)
+                observerViewStateLiveDataMock.onChanged(capture(loadingViewStateSlot))
+                observerViewStateLiveDataMock.onChanged(capture(errorViewStateSlot))
             }
         }
 
