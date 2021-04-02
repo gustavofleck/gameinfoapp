@@ -23,14 +23,20 @@ class ImageLoader(
         return this
     }
 
-    fun loadImage(imageView: ImageView, imageUri: String) {
-
+    fun loadCircleImage(imageView: ImageView, imageUri: String) {
         Glide.with(context)
             .load(imageUri)
             .placeholder(placeholder)
             .error(errorImageId)
             .circleCrop()
             .into(imageView)
+    }
 
+    fun loadSquareImage(imageView: ImageView, imageUri: String) {
+        Glide.with(context)
+            .load(imageUri)
+            .placeholder(placeholder)
+            .error(errorImageId)
+            .into(imageView)
     }
 }

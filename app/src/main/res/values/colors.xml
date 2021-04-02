@@ -10,4 +10,5 @@
     <color name="backgroundColor">#101010</color>
     <color name="orange">#FFA500</color>
     <color name="smoothBackground">#33101010</color>
+    <color name="lightGray">#696969</color>
 </resources>

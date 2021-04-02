@@ -61,7 +61,7 @@ internal class GameAdapter(
 
                 gameNameTextView.text = gameItem.name
 
-                imageLoader.loadImage(gameImageView, gameItem.backgroundImageUri)
+                imageLoader.loadCircleImage(gameImageView, gameItem.backgroundImageUri)
 
                 gameCardView.setOnClickListener {
                     Navigation.findNavController(it).navigate(GameListFragmentDirections.actionGameListFragmentToGameDetailsFragment(gameItem.id))

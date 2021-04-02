@@ -11,7 +11,7 @@ class GameDetailsMapper {
             gameDetailsResponse.description ?: "",
             gameDetailsResponse.backgroundImageUri ?: "",
             formatReleasedDate(gameDetailsResponse.released ?: ""),
-            gameDetailsResponse.metacritic ?: 0
+            gameDetailsResponse.metacritic ?: ""
         )
     }
 

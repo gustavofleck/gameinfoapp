@@ -7,5 +7,5 @@ data class GameDetailsResponse(
     @SerializedName("description_raw") val description: String?,
     @SerializedName("background_image") val backgroundImageUri: String?,
     @SerializedName("released") val released: String?,
-    @SerializedName("metacritic") val metacritic: Int?
+    @SerializedName("metacritic") val metacritic: String?
 )

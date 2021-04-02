@@ -69,10 +69,14 @@ class GameDetailsFragment : Fragment() {
 
     private fun successResponseViewStateUpdate(data: GameDetails) {
         loadingViewStateUpdate(false)
-        with(data) {
-            viewBinding.gameDetailsNameTextView.text = name
-            viewBinding.gameDetailsDescription.text = description
-            imageLoader.loadImage(viewBinding.gameBackgroundImageView, backgroundImageUri)
+        with(viewBinding) {
+            with(data) {
+                gameDetailsNameTextView.text = name
+                gameDetailsDescription.text = description
+                gameDetailsReleaseDateData.text = released
+                gameDetailsMetacriticData.text = metacritic
+                imageLoader.loadSquareImage(gameBackgroundImageView, backgroundImageUri)
+            }
         }
     }
 

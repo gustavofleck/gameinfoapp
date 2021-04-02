@@ -5,5 +5,5 @@ data class GameDetails(
     val description: String,
     val backgroundImageUri: String,
     val released: String,
-    val metacritic: Int
+    val metacritic: String
 )
