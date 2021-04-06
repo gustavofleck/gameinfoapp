@@ -26,7 +26,7 @@ internal class GameDetailsMapperTest {
         @Test
         fun `When response retrieved has null properties, should return a Game Details without null properties`() {
             val gameDetailsResponse = createNullGameDetailsResponseStub()
-            val expectedDefaultMetacriticValue = 0
+            val expectedDefaultMetacriticValue = ""
 
             val mappedGameDetails = gameDetailsMapper
                 .mapGameDetailsResponseToGameDetails(gameDetailsResponse)
