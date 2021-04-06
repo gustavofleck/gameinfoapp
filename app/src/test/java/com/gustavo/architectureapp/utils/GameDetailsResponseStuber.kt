@@ -8,7 +8,7 @@ fun createCompleteGameDetailsResponseStub() = GameDetailsResponse(
     description = "Description test",
     backgroundImageUri = "imageUri",
     released = "2021-01-01",
-    metacritic = 80
+    metacritic = "80"
 )
 
 fun createNullGameDetailsResponseStub() = GameDetailsResponse(
@@ -24,13 +24,5 @@ fun createCompleteMappedGameDetailsStub() = GameDetails(
     description = "Description test",
     backgroundImageUri = "imageUri",
     released = "01/01/2021",
-    metacritic = 80
-)
-
-fun createEmptyMappedGameDetailsStub() = GameDetails(
-    name = "",
-    description = "",
-    backgroundImageUri = "",
-    released = "",
-    metacritic = 0
+    metacritic = "80"
 )
