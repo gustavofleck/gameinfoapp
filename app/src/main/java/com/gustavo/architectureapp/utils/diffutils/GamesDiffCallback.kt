@@ -1,7 +1,7 @@
 package com.gustavo.architectureapp.utils.diffutils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.gustavo.architectureapp.data.games.GameItem
+import com.gustavo.architectureapp.data.model.GameItem
 
 class GamesDiffCallback(
     private val oldGameList: List<GameItem>,

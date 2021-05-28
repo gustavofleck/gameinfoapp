@@ -1,8 +1,8 @@
 package com.gustavo.architectureapp.data.mapper
 
 import android.net.Uri
-import com.gustavo.architectureapp.data.games.GameList
-import com.gustavo.architectureapp.data.games.GameListingResponse
+import com.gustavo.architectureapp.data.model.GameList
+import com.gustavo.architectureapp.data.model.GameListingResponse
 
 class GameListingMapper(
     private val gameMapper: GameMapper

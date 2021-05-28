@@ -119,6 +119,9 @@ dependencies {
     // Courotines test
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 
+    // Code Gen
+    testImplementation "io.vertx:vertx-codegen:3.6.0"
+
     // Tests
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

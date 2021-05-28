@@ -1,7 +1,7 @@
 package com.gustavo.architectureapp.application
 
 import android.app.Application
-import com.gustavo.architectureapp.utils.koin.gamesModule
+import com.gustavo.architectureapp.di.gamesModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

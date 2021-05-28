@@ -1,9 +1,9 @@
 package com.gustavo.architectureapp.utils
 
-import com.gustavo.architectureapp.data.games.GameItem
-import com.gustavo.architectureapp.data.games.GameList
-import com.gustavo.architectureapp.data.games.GameListingResponse
-import com.gustavo.architectureapp.data.games.GameResponse
+import com.gustavo.architectureapp.data.model.GameItem
+import com.gustavo.architectureapp.data.model.GameList
+import com.gustavo.architectureapp.data.model.GameListingResponse
+import com.gustavo.architectureapp.data.model.GameResponse
 
 fun createNullGameListResponse(): List<GameResponse> {
     return listOf(

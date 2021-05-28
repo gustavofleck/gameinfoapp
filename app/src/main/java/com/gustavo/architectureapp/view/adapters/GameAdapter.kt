@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.R
-import com.gustavo.architectureapp.data.games.GameItem
+import com.gustavo.architectureapp.data.model.GameItem
 import com.gustavo.architectureapp.utils.diffutils.GamesDiffCallback
 import com.gustavo.architectureapp.utils.image.ImageLoader
 import com.gustavo.architectureapp.view.fragments.GameListFragmentDirections

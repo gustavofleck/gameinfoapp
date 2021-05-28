@@ -1,10 +1,10 @@
-package com.gustavo.architectureapp.utils.koin
+package com.gustavo.architectureapp.di
 
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.view.adapters.PlatformAdapter
 import com.gustavo.architectureapp.data.api.GamesApiServiceProvider
 import com.gustavo.architectureapp.data.enums.PlatformEnum.*
-import com.gustavo.architectureapp.data.games.PlatformGrid
+import com.gustavo.architectureapp.data.model.PlatformGrid
 import com.gustavo.architectureapp.data.interactor.GameDetailsInteractor
 import com.gustavo.architectureapp.data.mapper.GameMapper
 import com.gustavo.architectureapp.data.interactor.GamesInteractor

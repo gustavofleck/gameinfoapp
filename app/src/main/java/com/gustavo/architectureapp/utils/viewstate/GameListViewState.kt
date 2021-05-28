@@ -1,6 +1,6 @@
 package com.gustavo.architectureapp.utils.viewstate
 
-import com.gustavo.architectureapp.data.games.GameItem
+import com.gustavo.architectureapp.data.model.GameItem
 
 sealed class GameListViewState {
     object Loading : GameListViewState()

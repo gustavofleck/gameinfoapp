@@ -1,6 +1,6 @@
 package com.gustavo.architectureapp.data.interactor
 
-import com.gustavo.architectureapp.data.games.GameList
+import com.gustavo.architectureapp.data.model.GameList
 import com.gustavo.architectureapp.data.repository.GameRepository
 import com.gustavo.architectureapp.utils.result.SimpleResult
 import io.mockk.coEvery

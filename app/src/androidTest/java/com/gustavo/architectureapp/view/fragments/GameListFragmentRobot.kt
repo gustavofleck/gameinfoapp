@@ -14,12 +14,11 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.gustavo.architectureapp.R
-import com.gustavo.architectureapp.data.games.GameItem
-import com.gustavo.architectureapp.utils.createMappedGameListResponse
 import com.gustavo.architectureapp.view.MainActivity
 import com.gustavo.architectureapp.view.adapters.PlatformAdapter
 import com.gustavo.architectureapp.viewmodel.GamesViewModel
 import com.gustavo.architectureapp.utils.image.ImageLoader
+import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Rule
@@ -53,23 +52,23 @@ class GameListFragmentRobot {
     }
 
     fun startWithLoading() {
-        val loadingLiveData = MutableLiveData<Boolean>()
+        val loadingLiveData = MutableLiveData<GameListViewState>()
 
-        every { viewModelMock.getGames(1, "") } answers { loadingLiveData.value = true }
+        every { viewModelMock.getGames(1, "") } answers { loadingLiveData.value = GameListViewState.Loading }
 
-        every { viewModelMock.getLoadingLiveDataValue() } returns loadingLiveData
+        every { viewModelMock.getViewStateLiveDataValue() } returns loadingLiveData
 
         launchFragment()
     }
 
     fun startWithGameListData() {
-        val gameListLiveData = MutableLiveData<List<GameItem>>()
+        val gameListLiveData = MutableLiveData<GameListViewState>()
 
         every { viewModelMock.getGames(1, "") } answers {
-            gameListLiveData.value = createMappedGameListResponse()
+//            gameListLiveData.value = GameListViewState.Success(createMappedGameListResponse())
         }
 
-        every { viewModelMock.getGameListLiveDataValue() } returns gameListLiveData
+        every { viewModelMock.getViewStateLiveDataValue() } returns gameListLiveData
 
         launchFragment()
     }

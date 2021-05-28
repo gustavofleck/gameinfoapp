@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import com.gustavo.architectureapp.R
-import com.gustavo.architectureapp.data.games.GameDetails
+import com.gustavo.architectureapp.data.model.GameDetails
+import com.gustavo.architectureapp.data.model.GameImages
+import com.gustavo.architectureapp.data.model.GameScreenshotResponse
 import com.gustavo.architectureapp.databinding.GameDetailsFragmentBinding
 import com.gustavo.architectureapp.utils.image.ImageLoader
 import com.gustavo.architectureapp.utils.viewstate.GameDetailsViewState
+import com.gustavo.architectureapp.view.adapters.GameAdapter
+import com.gustavo.architectureapp.view.adapters.GameDetailsImageAdapter
 import com.gustavo.architectureapp.viewmodel.GameDetailsViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +26,8 @@ class GameDetailsFragment : Fragment() {
     private val viewModel: GameDetailsViewModel by viewModel()
 
     private val imageLoader: ImageLoader by inject()
+
+    private lateinit var imagesAdapter: GameDetailsImageAdapter
 
     private lateinit var loadingDialog: AlertDialog
 
@@ -37,14 +44,32 @@ class GameDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            viewModel.getGameDetails(it.getInt("gameId"))
-        }
+        imagesAdapter = GameDetailsImageAdapter(imageLoader, requireContext())
 
-        observeViewModel()
+        setupGameScreenshotsRecyclerView()
 
         setupLoadingDialog()
 
+        arguments?.let {
+            with(viewModel) {
+                getGameDetails(it.getInt("gameId"))
+                getGameImages(it.getInt("gameId"))
+            }
+        }
+
+        observeViewModel()
+    }
+
+    private fun setupGameScreenshotsRecyclerView() {
+        viewBinding.gameDetailsGridImageContent.apply {
+            layoutManager = GridLayoutManager(
+                requireContext(),
+                1,
+                GridLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter = imagesAdapter
+        }
     }
 
     private fun setupLoadingDialog() {
@@ -64,7 +89,14 @@ class GameDetailsFragment : Fragment() {
         when(viewState) {
             is GameDetailsViewState.Loading -> loadingViewStateUpdate(true)
             is GameDetailsViewState.Success -> successResponseViewStateUpdate(viewState.data)
+            is GameDetailsViewState.ImagesSuccess -> successGameImagesFetch(viewState.data)
         }
+    }
+
+    private fun successGameImagesFetch(data: GameImages) {
+        loadingViewStateUpdate(false)
+        imagesAdapter.updateScreenshotList(data.images)
+
     }
 
     private fun successResponseViewStateUpdate(data: GameDetails) {

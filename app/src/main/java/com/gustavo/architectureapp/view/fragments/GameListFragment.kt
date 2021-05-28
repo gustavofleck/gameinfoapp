@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.databinding.FragmentGameListBinding
-import com.gustavo.architectureapp.data.games.GameItem
+import com.gustavo.architectureapp.data.model.GameItem
 import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import com.gustavo.architectureapp.utils.search.DebounceSearchListener
 import com.gustavo.architectureapp.view.adapters.GameAdapter

@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.data.games
+package com.gustavo.architectureapp.data.model
 
 import com.gustavo.architectureapp.data.mapper.GameMapper
 import com.gustavo.architectureapp.utils.createFilledGameListResponse

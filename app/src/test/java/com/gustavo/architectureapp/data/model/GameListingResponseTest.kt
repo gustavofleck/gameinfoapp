@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.data.games
+package com.gustavo.architectureapp.data.model
 
 import com.gustavo.architectureapp.data.api.GamesApiService
 import kotlinx.coroutines.runBlocking

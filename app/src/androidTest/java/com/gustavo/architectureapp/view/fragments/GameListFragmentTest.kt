@@ -19,7 +19,7 @@ class GameListFragmentTest {
     }
 
     @Test
-    fun when_start_fragment_should_call_getGames_and_Retrieve_a_game_list() {
+    fun when_start_fragment_should_call_getGames_and_retrieve_a_game_list() {
         val itemText = "Teste"
 
         gameListRobot {

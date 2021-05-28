@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.R
-import com.gustavo.architectureapp.data.games.PlatformGrid
+import com.gustavo.architectureapp.data.model.PlatformGrid
 import com.gustavo.architectureapp.view.fragments.PlatformListFragmentDirections
 import kotlinx.android.synthetic.main.platform_item.view.*
 

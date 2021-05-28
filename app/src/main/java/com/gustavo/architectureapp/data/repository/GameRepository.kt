@@ -1,10 +1,12 @@
 package com.gustavo.architectureapp.data.repository
 
 import com.gustavo.architectureapp.data.api.GamesApiService
-import com.gustavo.architectureapp.data.games.GameDetails
-import com.gustavo.architectureapp.data.games.GameList
+import com.gustavo.architectureapp.data.model.GameDetails
+import com.gustavo.architectureapp.data.model.GameList
 import com.gustavo.architectureapp.data.mapper.GameDetailsMapper
 import com.gustavo.architectureapp.data.mapper.GameListingMapper
+import com.gustavo.architectureapp.data.model.GameImages
+import com.gustavo.architectureapp.data.model.GameScreenshotListResponse
 
 class GameRepository(
     private val gamesApi: GamesApiService,
@@ -25,6 +27,11 @@ class GameRepository(
     suspend fun getGameDetails(gameId: Int): GameDetails {
         val gameDetailsResponse = gamesApi.getGameDetails(gameId)
         return gameDetailsMapper.mapGameDetailsResponseToGameDetails(gameDetailsResponse)
+    }
+
+    suspend fun getGameImages(gameId: Int): GameImages {
+        val gameScreenshotListResponse = gamesApi.getGameScreenshots(gameId)
+        return gameDetailsMapper.mapGameScreenshotListToGameImages(gameScreenshotListResponse)
     }
 
 }

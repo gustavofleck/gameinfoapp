@@ -1,9 +1,8 @@
-package com.gustavo.architectureapp.data.games
+package com.gustavo.architectureapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
 data class RequirementsResponse (
     @SerializedName("minimum") val minimum: String?,
-
     @SerializedName("recommended") val recommended: String?
 )

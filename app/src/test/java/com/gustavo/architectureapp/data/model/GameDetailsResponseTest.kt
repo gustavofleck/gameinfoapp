@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.data.games
+package com.gustavo.architectureapp.data.model
 
 import com.gustavo.architectureapp.data.api.GamesApiService
 import kotlinx.coroutines.runBlocking
@@ -59,7 +59,7 @@ internal class GameDetailsResponseTest {
     private fun mockResponseServer(): MockWebServer {
         val json = "{\"name\":\"$gameName\",\"description_raw\":\"$gameDescription\"," +
                 "\"background_image\":\"$gameBackgroundImage\",\"released\":\"$gameReleaseDate\"," +
-                "\"metacritic\":\"$gameMetacritic\"}"
+                "\"metacritic\":\"$gameMetacritic\"}" // adicionar os e2e e instrumentais
 
         return MockWebServer().apply {
             enqueue(MockResponse().setBody(json))

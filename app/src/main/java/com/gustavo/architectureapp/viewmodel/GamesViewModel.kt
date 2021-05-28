@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gustavo.architectureapp.data.games.GameItem
-import com.gustavo.architectureapp.data.games.GameList
+import com.gustavo.architectureapp.data.model.GameItem
+import com.gustavo.architectureapp.data.model.GameList
 import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import com.gustavo.architectureapp.data.interactor.GamesInteractor
 import com.gustavo.architectureapp.utils.pagination.PaginationController

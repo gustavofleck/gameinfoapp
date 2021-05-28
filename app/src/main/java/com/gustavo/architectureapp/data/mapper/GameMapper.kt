@@ -1,7 +1,7 @@
 package com.gustavo.architectureapp.data.mapper
 
-import com.gustavo.architectureapp.data.games.GameItem
-import com.gustavo.architectureapp.data.games.GameResponse
+import com.gustavo.architectureapp.data.model.GameItem
+import com.gustavo.architectureapp.data.model.GameResponse
 
 class GameMapper {
 
@@ -13,13 +13,5 @@ class GameMapper {
                 gameResponse.backgroundImageUri ?: "",
             )
         }
-    }
-
-    fun mapGameResponseToGame(gameResponse: GameResponse) : GameItem {
-        return GameItem(
-            gameResponse.id ?: 0,
-            gameResponse.name ?: "",
-            gameResponse.backgroundImageUri ?: "",
-        )
     }
 }

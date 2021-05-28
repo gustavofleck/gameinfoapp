@@ -1,7 +1,7 @@
 package com.gustavo.architectureapp.viewmodel
 
 import androidx.lifecycle.Observer
-import com.gustavo.architectureapp.data.games.GameList
+import com.gustavo.architectureapp.data.model.GameList
 import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import com.gustavo.architectureapp.data.interactor.GamesInteractor
 import com.gustavo.architectureapp.utils.*
