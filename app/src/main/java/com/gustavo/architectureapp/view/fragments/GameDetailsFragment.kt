@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.data.model.GameDetails
 import com.gustavo.architectureapp.data.model.GameImages
-import com.gustavo.architectureapp.data.model.GameScreenshotResponse
 import com.gustavo.architectureapp.databinding.GameDetailsFragmentBinding
 import com.gustavo.architectureapp.utils.image.ImageLoader
 import com.gustavo.architectureapp.utils.viewstate.GameDetailsViewState
-import com.gustavo.architectureapp.view.adapters.GameAdapter
 import com.gustavo.architectureapp.view.adapters.GameDetailsImageAdapter
 import com.gustavo.architectureapp.viewmodel.GameDetailsViewModel
 import org.koin.android.ext.android.inject

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.game_item.view.*
 
 internal class GameAdapter(
     private val imageLoader: ImageLoader
-) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() { // robolectric
+) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
 
     private var gameList = listOf<GameItem>()
 

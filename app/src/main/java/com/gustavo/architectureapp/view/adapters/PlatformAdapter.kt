@@ -17,6 +17,7 @@ internal class PlatformAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : PlatformViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.platform_item, parent, false)
         return PlatformViewHolder(view)
+        //TODO Passar para viewBinding
     }
 
     override fun onBindViewHolder(holder: PlatformViewHolder, position: Int) {

@@ -42,6 +42,6 @@ class FileManager(
         }
     }
 
-
+    //TODO Utilizar MediaStore
 
 }
