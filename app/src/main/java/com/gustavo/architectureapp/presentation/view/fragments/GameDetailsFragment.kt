@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view.fragments
+package com.gustavo.architectureapp.presentation.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,8 +14,8 @@ import com.gustavo.architectureapp.data.model.GameImages
 import com.gustavo.architectureapp.databinding.GameDetailsFragmentBinding
 import com.gustavo.architectureapp.utils.image.ImageLoader
 import com.gustavo.architectureapp.utils.viewstate.GameDetailsViewState
-import com.gustavo.architectureapp.view.adapters.GameDetailsImageAdapter
-import com.gustavo.architectureapp.viewmodel.GameDetailsViewModel
+import com.gustavo.architectureapp.presentation.view.adapters.GameDetailsImageAdapter
+import com.gustavo.architectureapp.presentation.viewmodel.GameDetailsViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

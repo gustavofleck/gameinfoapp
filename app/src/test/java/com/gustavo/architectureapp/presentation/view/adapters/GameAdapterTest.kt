@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view.adapters
+package com.gustavo.architectureapp.presentation.view.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.utils.createMappedGameListResponse

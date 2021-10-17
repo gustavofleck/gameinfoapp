@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view.fragments
+package com.gustavo.architectureapp.presentation.view.fragments
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.junit.Test

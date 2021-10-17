@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view
+package com.gustavo.architectureapp.presentation.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

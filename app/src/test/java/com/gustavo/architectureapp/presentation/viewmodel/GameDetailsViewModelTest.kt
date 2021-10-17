@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.viewmodel
+package com.gustavo.architectureapp.presentation.viewmodel
 
 import androidx.lifecycle.Observer
 import com.gustavo.architectureapp.data.interactor.GameDetailsInteractor

@@ -15,6 +15,7 @@ interface GamesApiService {
     suspend fun getGameList(
         @Query("search") search: String? = null,
         @Query("ordering") ordering: String? = null,
+        @Query("platforms") platform: Int,
         @Query("page") page: Int? = null,
         @Query("key") apiKey: String = API_KEY
     ): GameListingResponse

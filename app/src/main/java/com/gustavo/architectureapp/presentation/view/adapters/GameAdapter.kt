@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view.adapters
+package com.gustavo.architectureapp.presentation.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.data.model.GameItem
 import com.gustavo.architectureapp.utils.diffutils.GamesDiffCallback
 import com.gustavo.architectureapp.utils.image.ImageLoader
-import com.gustavo.architectureapp.view.fragments.GameListFragmentDirections
+import com.gustavo.architectureapp.presentation.view.fragments.GameListFragmentDirections
 import kotlinx.android.synthetic.main.game_item.view.*
 
 internal class GameAdapter(

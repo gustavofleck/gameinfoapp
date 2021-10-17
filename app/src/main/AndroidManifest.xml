@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ArchitectureApp"
         android:name=".application.GamesApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MainActivity">
+        <activity android:name="com.gustavo.architectureapp.presentation.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

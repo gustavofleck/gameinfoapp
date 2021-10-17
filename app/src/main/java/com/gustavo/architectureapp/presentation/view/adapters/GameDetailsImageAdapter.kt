@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view.adapters
+package com.gustavo.architectureapp.presentation.view.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.architectureapp.R
 import com.gustavo.architectureapp.data.model.GameScreenshot
-import com.gustavo.architectureapp.data.model.GameScreenshotResponse
 import com.gustavo.architectureapp.data.storage.FileManager
 import com.gustavo.architectureapp.utils.image.ImageLoader
 import kotlinx.android.synthetic.main.grid_image_item.view.*

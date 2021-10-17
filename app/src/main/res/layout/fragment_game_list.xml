@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:theme="@style/AppBaseTheme"
-    tools:context=".view.fragments.GameListFragment">
+    tools:context="com.gustavo.architectureapp.presentation.view.fragments.GameListFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCardView"

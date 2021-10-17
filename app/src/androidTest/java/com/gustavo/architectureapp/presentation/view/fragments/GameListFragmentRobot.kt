@@ -1,4 +1,4 @@
-package com.gustavo.architectureapp.view.fragments
+package com.gustavo.architectureapp.presentation.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,9 +14,8 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.gustavo.architectureapp.R
-import com.gustavo.architectureapp.view.MainActivity
-import com.gustavo.architectureapp.view.adapters.PlatformAdapter
-import com.gustavo.architectureapp.viewmodel.GamesViewModel
+import com.gustavo.architectureapp.presentation.view.MainActivity
+import com.gustavo.architectureapp.presentation.viewmodel.GamesViewModel
 import com.gustavo.architectureapp.utils.image.ImageLoader
 import com.gustavo.architectureapp.utils.viewstate.GameListViewState
 import io.mockk.every
@@ -37,7 +36,6 @@ class GameListFragmentRobot {
     val activityRule = ActivityTestRule(MainActivity::class.java)
 
     private val viewModelMock = mockk<GamesViewModel>(relaxed = true)
-    private val platformAdapterMock = mockk<PlatformAdapter>(relaxed = true)
     private val imageLoaderMock = mockk<ImageLoader>(relaxed = true)
 
     private val bundle = Bundle()
@@ -45,7 +43,6 @@ class GameListFragmentRobot {
     init {
         bundle.putInt("platformId", 1)
         loadKoinModules(module(override = true) {
-            factory { platformAdapterMock }
             factory { imageLoaderMock }
             viewModel { viewModelMock }
         })

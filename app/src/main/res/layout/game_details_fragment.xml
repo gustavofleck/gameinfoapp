@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightGray"
-    tools:context=".view.fragments.GameDetailsFragment">
+    tools:context="com.gustavo.architectureapp.presentation.view.fragments.GameDetailsFragment">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/platformListFragment"
-        android:name="com.gustavo.architectureapp.view.fragments.PlatformListFragment"
+        android:name="com.gustavo.architectureapp.presentation.view.fragments.PlatformListFragment"
         android:label="PlatformListFragment" >
         <action
             android:id="@+id/actionToGameListFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameListFragment"
-        android:name="com.gustavo.architectureapp.view.fragments.GameListFragment"
+        android:name="com.gustavo.architectureapp.presentation.view.fragments.GameListFragment"
         android:label="fragment_game_list"
         tools:layout="@layout/fragment_game_list" >
         <argument
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameDetailsFragment"
-        android:name="com.gustavo.architectureapp.view.fragments.GameDetailsFragment"
+        android:name="com.gustavo.architectureapp.presentation.view.fragments.GameDetailsFragment"
         android:label="game_details_fragment"
         tools:layout="@layout/game_details_fragment" >
         <argument
